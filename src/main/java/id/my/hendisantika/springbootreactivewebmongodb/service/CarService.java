@@ -30,4 +30,8 @@ public class CarService {
         return carRepository.findById(id);
     }
 
+    public Flux<Car> byBrand(String brand) {
+        return carRepository.findByBrandIgnoreCase(brand);
+    }
+
 }

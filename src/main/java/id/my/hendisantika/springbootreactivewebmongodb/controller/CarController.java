@@ -2,15 +2,21 @@ package id.my.hendisantika.springbootreactivewebmongodb.controller;
 
 import id.my.hendisantika.springbootreactivewebmongodb.model.Car;
 import id.my.hendisantika.springbootreactivewebmongodb.service.CarService;
+import io.netty.handler.codec.DecoderException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.net.URI;
 
 /**
  * Created by IntelliJ IDEA.
@@ -37,6 +43,22 @@ public class CarController {
     @GetMapping("/{id}")
     public Mono<ResponseEntity<?>> byId(@PathVariable String id) {
         return service.createCarMonoOpt(service.byId(id)).flatMap(flatMapMonoCarOK);
+    }
+
+    @PostMapping
+    public Mono<ResponseEntity<?>> create(@RequestBody Car car, UriComponentsBuilder uriBuilder) {
+        try {
+            return service.create(car).flatMap(createdCar -> {
+                String location = uriBuilder.path("cars/{id}").buildAndExpand(createdCar.getId()).toUriString();
+                return Mono.just(ResponseEntity.created(URI.create(location)).body(createdCar));
+            });
+        } catch (DecoderException e) {
+            System.err.println("error: " + e.getMessage());
+            return Mono.just(ResponseEntity.badRequest().body(e.getCause()));
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return Mono.just(ResponseEntity.internalServerError().body(e.getCause()));
+        }
     }
 
 }

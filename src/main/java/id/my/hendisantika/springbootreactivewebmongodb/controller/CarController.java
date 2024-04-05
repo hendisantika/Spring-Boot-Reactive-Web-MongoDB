@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,6 +53,20 @@ public class CarController {
                 String location = uriBuilder.path("cars/{id}").buildAndExpand(createdCar.getId()).toUriString();
                 return Mono.just(ResponseEntity.created(URI.create(location)).body(createdCar));
             });
+        } catch (DecoderException e) {
+            System.err.println("error: " + e.getMessage());
+            return Mono.just(ResponseEntity.badRequest().body(e.getCause()));
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return Mono.just(ResponseEntity.internalServerError().body(e.getCause()));
+        }
+    }
+
+    @PutMapping("/{id}")
+    public Mono<ResponseEntity<?>> update(@PathVariable String id, @RequestBody Car car) {
+        try {
+            return service.createCarMonoOpt(service.update(id, car))
+                    .flatMap(flatMapMonoCarOK);
         } catch (DecoderException e) {
             System.err.println("error: " + e.getMessage());
             return Mono.just(ResponseEntity.badRequest().body(e.getCause()));

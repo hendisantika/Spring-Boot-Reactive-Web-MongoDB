@@ -1,8 +1,10 @@
 package id.my.hendisantika.springbootreactivewebmongodb.service;
 
+import id.my.hendisantika.springbootreactivewebmongodb.model.Car;
 import id.my.hendisantika.springbootreactivewebmongodb.repository.CarRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 
 /**
  * Created by IntelliJ IDEA.
@@ -18,6 +20,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CarService {
     private final CarRepository carRepository;
+
+    public Flux<Car> all() {
+        return carRepository.findAll();
+    }
 
 
 }

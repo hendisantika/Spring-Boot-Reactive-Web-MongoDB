@@ -38,4 +38,14 @@ public class CarService {
         return carRepository.save(car);
     }
 
+    public Mono<Car> update(String id, Car car) {
+        return createCarMonoOpt(carRepository.findById(id))
+                .flatMap(carOpt -> {
+                    if (carOpt.isEmpty()) return Mono.empty();
+
+                    car.setId(id);
+                    return carRepository.save(car);
+                });
+    }
+
 }

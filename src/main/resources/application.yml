@@ -1,0 +1,20 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: Spring-Boot-Reactive-Web-MongoDB
+  data:
+    mongodb:
+      #      host: localhost
+      #      port: 27777
+      username: ${MONGO_INITDB_ROOT_USERNAME}
+      password: ${MONGO_INITDB_ROOT_PASSWORD}
+      uri: mongodb://localhost:27777/${MONGO_INITDB_DATABASE:my-db}
+      #      database: ${MONGO_INITIDB_DATABASE}
+      authentication-database: admin
+
+  docker:
+    compose:
+      file: ./docker/compose.dev.yml
+      enabled: true

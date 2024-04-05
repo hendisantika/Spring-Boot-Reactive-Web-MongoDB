@@ -1,1 +1,25 @@
+version: "3.9"
 services:
+  mongodb:
+    image: mongo:latest
+    container_name: webflux-mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: secret
+      MONGO_INITDB_DATABASE: cars
+    ports:
+      - "27777:27017"
+    volumes:
+      - mongodb:/data/db
+#  spring-app:
+#    container_name: spring-app
+#    build: .
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - mongodb
+
+volumes:
+  mongodb:
+    driver: local

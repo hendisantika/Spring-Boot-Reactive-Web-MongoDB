@@ -1,0 +1,24 @@
+09:07:50.782 [AWT-EventQueue-0] INFO  c.b.l.BrowserStackRunExtension - gradle
+09:07:50.783 [AWT-EventQueue-0] INFO  com.browserstack.utils.Helpers - null
+09:07:54.653 [ApplicationImpl pooled thread 63] INFO  c.b.l.BrowserStackRunExtension - spring boot
+09:07:54.653 [ApplicationImpl pooled thread 63] INFO  com.browserstack.utils.Helpers - null
+10:01:32.942 [AWT-EventQueue-0] INFO  c.b.l.BrowserStackRunExtension - gradle
+10:01:32.943 [AWT-EventQueue-0] INFO  com.browserstack.utils.Helpers - null
+10:01:33.997 [ApplicationImpl pooled thread 18] INFO  c.b.l.BrowserStackRunExtension - spring boot
+10:01:33.998 [ApplicationImpl pooled thread 18] INFO  com.browserstack.utils.Helpers - null
+10:04:45.738 [AWT-EventQueue-0] INFO  c.b.l.BrowserStackRunExtension - gradle
+10:04:45.738 [AWT-EventQueue-0] INFO  com.browserstack.utils.Helpers - null
+10:04:46.473 [ApplicationImpl pooled thread 18] INFO  c.b.l.BrowserStackRunExtension - spring boot
+10:04:46.474 [ApplicationImpl pooled thread 18] INFO  com.browserstack.utils.Helpers - null
+10:04:49.855 [AWT-EventQueue-0] INFO  c.b.l.BrowserStackRunExtension - gradle
+10:04:49.855 [AWT-EventQueue-0] INFO  com.browserstack.utils.Helpers - null
+10:05:16.125 [AWT-EventQueue-0] INFO  c.b.l.BrowserStackRunExtension - gradle
+10:05:16.125 [AWT-EventQueue-0] INFO  com.browserstack.utils.Helpers - null
+10:05:16.621 [ApplicationImpl pooled thread 17] INFO  c.b.l.BrowserStackRunExtension - spring boot
+10:05:16.621 [ApplicationImpl pooled thread 17] INFO  com.browserstack.utils.Helpers - null
+10:05:40.196 [AWT-EventQueue-0] INFO  c.b.l.BrowserStackRunExtension - gradle
+10:05:40.196 [AWT-EventQueue-0] INFO  com.browserstack.utils.Helpers - null
+10:05:40.678 [ApplicationImpl pooled thread 19] INFO  c.b.l.BrowserStackRunExtension - spring boot
+10:05:40.678 [ApplicationImpl pooled thread 19] INFO  com.browserstack.utils.Helpers - null
+10:05:41.143 [AWT-EventQueue-0] INFO  c.b.l.BrowserStackRunExtension - gradle
+10:05:41.143 [AWT-EventQueue-0] INFO  com.browserstack.utils.Helpers - null

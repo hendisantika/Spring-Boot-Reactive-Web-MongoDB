@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.Optional;
+
 /**
  * Created by IntelliJ IDEA.
  * Project : Spring-Boot-Reactive-Web-MongoDB
@@ -52,5 +54,8 @@ public class CarService {
         return carRepository.deleteById(id);
     }
 
+    public Mono<Optional<Car>> createCarMonoOpt(Mono<Car> carMono) {
+        return carMono.map(Optional::of).defaultIfEmpty(Optional.empty());
+    }
 
 }

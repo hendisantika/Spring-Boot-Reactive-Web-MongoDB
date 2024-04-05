@@ -1,9 +1,13 @@
 package id.my.hendisantika.springbootreactivewebmongodb.controller;
 
+import id.my.hendisantika.springbootreactivewebmongodb.model.Car;
 import id.my.hendisantika.springbootreactivewebmongodb.service.CarService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 
 /**
  * Created by IntelliJ IDEA.
@@ -20,5 +24,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class CarController {
     private final CarService service;
+
+    @GetMapping
+    public Flux<Car> all(@RequestParam(required = false) String brand) {
+        if (brand == null) return service.all();
+        return service.byBrand(brand);
+    }
 
 }

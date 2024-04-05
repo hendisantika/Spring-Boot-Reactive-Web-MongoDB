@@ -19,6 +19,8 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.net.URI;
+import java.util.Optional;
+import java.util.function.Function;
 
 /**
  * Created by IntelliJ IDEA.
@@ -83,5 +85,9 @@ public class CarController {
         return ResponseEntity.noContent().build();
     }
 
+
+    private final Function<Optional<Car>, Mono<ResponseEntity<?>>> flatMapMonoCarOK = carOpt ->
+            carOpt.<Mono<ResponseEntity<?>>>map(car -> Mono.just(ResponseEntity.ok(car)))
+                    .orElseGet(() -> Mono.just(ResponseEntity.notFound().build()));
 
 }

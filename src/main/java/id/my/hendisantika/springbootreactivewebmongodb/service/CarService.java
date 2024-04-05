@@ -5,6 +5,7 @@ import id.my.hendisantika.springbootreactivewebmongodb.repository.CarRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 /**
  * Created by IntelliJ IDEA.
@@ -25,5 +26,8 @@ public class CarService {
         return carRepository.findAll();
     }
 
+    public Mono<Car> byId(String id) {
+        return carRepository.findById(id);
+    }
 
 }

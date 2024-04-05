@@ -48,4 +48,9 @@ public class CarService {
                 });
     }
 
+    public Mono<Void> deleteById(String id) {
+        return carRepository.deleteById(id);
+    }
+
+
 }

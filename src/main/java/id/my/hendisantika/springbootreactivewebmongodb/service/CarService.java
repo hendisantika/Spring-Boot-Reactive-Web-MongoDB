@@ -34,4 +34,8 @@ public class CarService {
         return carRepository.findByBrandIgnoreCase(brand);
     }
 
+    public Mono<Car> create(Car car) {
+        return carRepository.save(car);
+    }
+
 }

@@ -26,7 +26,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
-    implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:3.0.0")
+    implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:3.0.1")
 
     implementation("org.apache.groovy:groovy")
     compileOnly("org.projectlombok:lombok")
